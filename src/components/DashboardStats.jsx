@@ -49,19 +49,19 @@ const DashboardStats = () => {
 
   return (
     <div className="grid grid-rows-4 w-96 md:w-96 mx-auto sm:grid-cols-2 md:grid-cols-2 gap-4">
-      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center w-80 mx-auto md:mx-auto md:w-40">
         <p className="text-2xl font-bold text-[#a14bf4]">{stats.totalTests}</p>
         <p className="text-gray-600 text-sm">Tests Written</p>
       </div>
-      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center w-80 mx-auto md:w-40">
         <p className="text-2xl font-bold text-green-500">{stats.passed}</p>
         <p className="text-gray-600 text-sm">Passed</p>
       </div>
-      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center w-80 mx-auto md:w-40">
         <p className="text-2xl font-bold text-red-500">{stats.failed}</p>
         <p className="text-gray-600 text-sm">Failed</p>
       </div>
-      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+      <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center w-80 mx-auto md:w-40">
         <p className="text-2xl font-bold text-purple-500">
           {typeof stats.average === "number" && stats.average >= 0
             ? stats.average.toFixed(2) + "%"

@@ -6,13 +6,13 @@ import DashboardStats from "../components/DashboardStats";
 const UserDashboard = () => {
   return (
     <SidebarLayout>
-      <div className="flex flex-col gap-8 p-4 md:p-6 max-w-7xl mx-auto w-full ">
-        {/* Top Row: Recent Tests + Upcoming Quiz */}
+      <div className="w-full max-w-screen-xl mx-auto space-y-10">
+        {/* Top Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <RecentTests />
-          <div className="w-full max-w-sm mx-auto md:ml-27">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800">Upcoming Quiz Competition</h3>
-            <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+          <div className="w-full">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center">Upcoming Quiz Competition</h3>
+            <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center md:w-80 md:mx-auto md:mt-20 w-80 mx-auto">
               <div className="text-5xl mb-2 text-[#a14bf4]">12</div>
               <p className="text-gray-600 mb-2">12th Aug, 2023</p>
               <button className="bg-[#a14bf4] hover:bg-[#8e3ef3] text-white py-2 px-4 rounded-full">
@@ -22,11 +22,11 @@ const UserDashboard = () => {
           </div>
         </div>
 
-        {/* Bottom Row: Leaderboard + Stats */}
+        {/* Bottom Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="w-full max-w-sm mx-auto md:mx-0">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800">Leader Board</h3>
-            <div className="bg-gray-100 p-4 rounded-xl shadow-md space-y-4">
+          <div className="w-full">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center md:text-left">Leader Board</h3>
+            <div className="bg-gray-100 p-4 rounded-xl shadow-md space-y-4 md:mt-12 w-80 mx-auto md:w-full">
               {[
                 { name: "John Leboo", medal: "🥇" },
                 { name: "Samuel Kingasunye", medal: "🥈" },
@@ -46,10 +46,10 @@ const UserDashboard = () => {
               ))}
             </div>
           </div>
+              <div className="md:mt-11">
+              <DashboardStats />
 
-          <div>
-            <DashboardStats />
-          </div>
+              </div>
         </div>
       </div>
     </SidebarLayout>
