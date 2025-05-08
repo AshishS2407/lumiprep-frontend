@@ -15,14 +15,25 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await axios.post("https://lumiprep10-production-e6da.up.railway.app/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://lumiprep10-production-e6da.up.railway.app/auth/login",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: false, // Optional unless using cookies
+        }
+      );
+      
 
       const { token, user } = res.data;
       localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      console.log("Token stored:", localStorage.getItem("token")); // ✅ Check if storing
+            localStorage.setItem("user", JSON.stringify(user));
 
       if (user.role === "admin") {
         navigate("/admin-dashboard");
