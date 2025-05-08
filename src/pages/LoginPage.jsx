@@ -86,7 +86,7 @@ const LoginPage = () => {
       {/* Responsive Container */}
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center h-[calc(100vh-80px)] px-4 md:px-10">
         {/* Image Section */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center h-1/2 lg:h-full mt-28 lg:mt-10 md:mt-18">
+        <div className="w-full lg:w-1/2 flex justify-center items-center h-1/2 lg:h-full mt-2 lg:mt-10 md:mt-1">
           <img
             src="/manBook.png"
             alt="Student"
@@ -95,7 +95,7 @@ const LoginPage = () => {
         </div>
 
         {/* Login Section */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center h-1/2 lg:h-full md:mt-10 mt-15">
+        <div className="w-full lg:w-1/2 flex justify-center items-center h-1/2 lg:h-full md:mt-14 mt-28">
           <div className="bg-white/90 w-[90%] max-w-[450px] rounded-3xl shadow-lg p-4 md:p-8">
             <div className="text-center">
               <h1 className="text-2xl md:text-3xl font-bold text-purple-600 mb-6">
