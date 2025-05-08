@@ -13,8 +13,10 @@ const AddExplanation = () => {
   useEffect(() => {
     const fetchTests = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/tests', {
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await axios.get('https://lumiprep10-production-e6da.up.railway.app/tests', {
+          headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", },
+          withCredentials: false,
+
         });
         setTests(res.data);
       } catch (err) {

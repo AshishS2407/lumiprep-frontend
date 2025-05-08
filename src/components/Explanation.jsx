@@ -17,8 +17,9 @@ const Explanation = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/tests/${testId}/questions`, {
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/questions`, {
+          headers: { Authorization: `Bearer ${token}` , "Content-Type": "application/json",},
+          withCredentials: false,
         });
 
         if (Array.isArray(res.data)) {
@@ -39,16 +40,19 @@ const Explanation = () => {
   const handleAddExplanation = async (questionId) => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/tests/${testId}/questions/${questionId}/explanation`,
+        `https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/questions/${questionId}/explanation`,
         { explanation: newExplanation },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        withCredentials: false,
+      }
       );
       setMessage(res.data.message);
       setNewExplanation('');
       setVisibleExplanationForm(null);
 
-      const refresh = await axios.get(`http://localhost:3000/tests/${testId}/questions`, {
-        headers: { Authorization: `Bearer ${token}` },
+      const refresh = await axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/questions`, {
+        headers: { Authorization: `Bearer ${token}` , "Content-Type": "application/json"},
+        withCredentials: false,
       });
       setQuestions(refresh.data.questions || refresh.data || []);
     } catch (err) {

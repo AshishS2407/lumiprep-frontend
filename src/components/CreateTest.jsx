@@ -30,10 +30,12 @@ const CreateTest = () => {
     }
   
     try {
-      const res = await axios.post('http://localhost:3000/tests', formData, {
+      const res = await axios.post('https://lumiprep10-production-e6da.up.railway.app/tests', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
+        withCredentials: false, // Optional unless using cookies
       });
       setMessage(res.data.message);
       setFormData({

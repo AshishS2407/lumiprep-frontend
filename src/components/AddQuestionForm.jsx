@@ -23,8 +23,10 @@ const AddQuestionForm = () => {
   useEffect(() => {
     const fetchTest = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/tests/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${id}`, {
+          headers: { Authorization: `Bearer ${token}`,               "Content-Type": "application/json"
+        },
+        withCredentials: false, // Optional unless using cookies
         });
         setTest(res.data);
       } catch (err) {
@@ -56,9 +58,11 @@ const AddQuestionForm = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:3000/tests/${id}/questions`,
+        `https://lumiprep10-production-e6da.up.railway.app/tests/${id}/questions`,
         { questionText, options },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } ,
+        withCredentials: false,
+      }
       );
       setMessage(res.data.message || 'Question added successfully');
       setQuestionText('');

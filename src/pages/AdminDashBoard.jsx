@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import AdminSidebar from '../components/AdminSidebar';
+import AdminSidebarLayout from '../components/AdminSidebarLayout';
 
 const cardData = [
   {
@@ -47,46 +47,42 @@ const cardData = [
 
 const AdminDashBoard = () => {
   return (
-    <div className="flex min-h-screen bg-[#f8f9fb]">
-      <AdminSidebar />
+    <AdminSidebarLayout>
+      <motion.h1
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-semibold text-gray-800 mb-4"
+      >
+        Admin Dashboard
+      </motion.h1>
 
-      <div className="flex-1 p-10 overflow-y-auto">
-        <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-semibold text-gray-800 mb-4"
-        >
-          Admin Dashboard
-        </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-lg text-gray-600 mb-10"
+      >
+        All essential tools for test creation, monitoring, and system administration in one place.
+      </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg text-gray-600 mb-10"
-        >
-          All essential tools for test creation, monitoring, and system administration in one place.
-        </motion.p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {cardData.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`p-6 bg-white rounded-2xl border-l-4 ${card.border} shadow hover:shadow-xl transition duration-300`}
-            >
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                {card.title}
-              </h2>
-              <p className="text-gray-600">{card.description}</p>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {cardData.map((card, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
+            className={`p-6 bg-white rounded-2xl border-l-4 ${card.border} shadow hover:shadow-xl transition duration-300`}
+          >
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              {card.title}
+            </h2>
+            <p className="text-gray-600">{card.description}</p>
+          </motion.div>
+        ))}
       </div>
-    </div>
+    </AdminSidebarLayout>
   );
 };
 

@@ -19,9 +19,11 @@ const FetchTest = () => {
         return;
       }
       try {
-        const res = await axios.get('http://localhost:3000/tests', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get('https://lumiprep10-production-e6da.up.railway.app/tests', {
+          headers: { Authorization: `Bearer ${token}`,             "Content-Type": "application/json",
+        },
+        withCredentials: false, // Optional unless using cookies
+      });
         setTests(res.data);
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to fetch tests');

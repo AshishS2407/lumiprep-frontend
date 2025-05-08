@@ -27,8 +27,9 @@ const UpdateTest = () => {
 
     const fetchTest = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/tests/${testId}`, {
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}`, {
+          headers: { Authorization: `Bearer ${token}` , "Content-Type": "application/json" },
+          withCredentials: false, // Optional unless using cookies
         });
 
         const test = res.data;
@@ -59,11 +60,13 @@ const UpdateTest = () => {
 
     try {
       await axios.put(
-        `http://localhost:3000/tests/update/${testId}`,
+        `https://lumiprep10-production-e6da.up.railway.app/tests/update/${testId}`,
         formData,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${token}` , "Content-Type": "application/json"},
+          withCredentials: false,
         }
+        
       );
 
       setSuccess('Test updated successfully');

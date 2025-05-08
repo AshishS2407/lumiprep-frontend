@@ -1,14 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import AdminSidebar from '../components/AdminSidebar';
+import AdminSidebarLayout from '../components/AdminSidebarLayout';
 import AddQuestionForm from '../components/AddQuestionForm';
 
 const AddQuestionFormPage = () => {
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] font-sans">
-      <AdminSidebar />
-
-      <div className="flex-1 flex items-center justify-center p-6">
+    <AdminSidebarLayout>
+      <div className="flex items-center justify-center p-6 min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,7 +25,7 @@ const AddQuestionFormPage = () => {
           <AddQuestionForm />
         </motion.div>
       </div>
-    </div>
+    </AdminSidebarLayout>
   );
 };
 
