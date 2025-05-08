@@ -15,7 +15,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await axios.post("knowlumibackend.com/auth/login", {
+      const res = await axios.post("https://lumiprep10-production.up.railway.app/auth/login", {
         email,
         password,
       });
