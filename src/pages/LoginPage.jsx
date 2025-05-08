@@ -15,7 +15,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await axios.post("https://lumiprep10-production.up.railway.app/auth/login", {
+      const res = await axios.post("http://localhost:3000/auth/login", {
         email,
         password,
       });
