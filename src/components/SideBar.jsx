@@ -28,7 +28,7 @@ const Sidebar = () => {
 <aside className="h-screen w-64 flex flex-col justify-between bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] p-6 shadow-xl">
 <div>
         <h1 className="text-2xl font-bold text-[#a14bf4] mb-12">
-          Learn <span className="text-gray-700">Code</span>
+          Lumi <span className="text-gray-700">Prep</span>
         </h1>
         <nav className="space-y-6 text-gray-700">
           <Link to="/dashboard" className="flex items-center gap-3 font-semibold hover:text-[#a14bf4]">
