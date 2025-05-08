@@ -25,7 +25,7 @@ const SidebarLayout = ({ children }) => {
   }, [mobileOpen]);
 
   return (
-    <div className="min-h-screen h-screen flex flex-col lg:flex-row bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] font-sans relative overflow-hidden">
+    <div className="h-screen flex flex-col lg:flex-row bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] font-sans relative overflow-hidden">
 
       {/* Sidebar */}
       <div

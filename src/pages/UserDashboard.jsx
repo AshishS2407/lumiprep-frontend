@@ -25,8 +25,8 @@ const UserDashboard = () => {
         {/* Bottom Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="w-full">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center md:text-left">Leader Board</h3>
-            <div className="bg-gray-100 p-4 rounded-xl shadow-md space-y-4 md:mt-12 w-80 mx-auto md:w-full">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center md:text-left md:mt-10">Leader Board</h3>
+            <div className="bg-gray-100 p-4 rounded-xl shadow-md space-y-6 md:mt-8 w-80 mx-auto md:w-[400px] md:ml-0">
               {[
                 { name: "John Leboo", medal: "🥇" },
                 { name: "Samuel Kingasunye", medal: "🥈" },
@@ -46,7 +46,7 @@ const UserDashboard = () => {
               ))}
             </div>
           </div>
-              <div className="md:mt-11">
+              <div className="md:mt-23">
               <DashboardStats />
 
               </div>
