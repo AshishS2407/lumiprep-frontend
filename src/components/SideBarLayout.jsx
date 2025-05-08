@@ -46,7 +46,7 @@ const SidebarLayout = ({ children }) => {
             <button className="text-3xl text-gray-700" onClick={() => setMobileOpen(!mobileOpen)}>
               <HiMenu />
             </button>
-            <span className="text-2xl font-semibold text-gray-800">Learn Code</span>
+            <span className="text-2xl font-semibold text-gray-800">Lumi Prep</span>
           </div>
 
           {/* Headings */}
