@@ -15,7 +15,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:3000/auth/login", {
+      const res = await axios.post("knowlumibackend.com/auth/login", {
         email,
         password,
       });
