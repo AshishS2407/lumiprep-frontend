@@ -105,30 +105,39 @@ const StartTest = () => {
 
   const handleSubmit = async () => {
     const token = localStorage.getItem("token");
+  
     const answers = Object.entries(selectedAnswers).map(
       ([questionId, selectedOptionIndex]) => ({
         questionId,
         selectedOptionIndex,
       })
     );
-
+  
     try {
-      await axios.post(
-        `http://localhost:3000/tests/${testId}/submit-answers`,
-        { testId, answers },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
+      const response = await axios({
+        method: "post",
+        url: `https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/submit-answers`,
+        data: {
+          testId,
+          answers,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+  
+      console.log("Submission response:", response.data);
+  
       localStorage.removeItem(`answers-${testId}`);
       localStorage.removeItem(`timer-${testId}`);
-
+  
       navigate(`/test/${testId}/submitted`);
     } catch (err) {
-      console.error("Submission failed:", err);
+      console.error("Submission failed:", err.response?.data || err.message);
     }
   };
+  
 
   if (!test || timer === null) {
     return (
