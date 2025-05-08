@@ -17,19 +17,28 @@ const TestResult = () => {
     const fetchResults = async () => {
       try {
         const token = localStorage.getItem("token");
-
+  
         const [evalRes, explanationRes, testRes] = await Promise.all([
-          axios.get(`http://localhost:3000/tests/${testId}/evaluate`, {
-            headers: { Authorization: `Bearer ${token}` },
+          axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/evaluate`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
           }),
-          axios.get(`http://localhost:3000/tests/${testId}/explanations`, {
-            headers: { Authorization: `Bearer ${token}` },
+          axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/explanations`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
           }),
-          axios.get(`http://localhost:3000/tests/${testId}`, {
-            headers: { Authorization: `Bearer ${token}` },
+          axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
           }),
         ]);
-
+  
         setResult(evalRes.data);
         setQuestions(explanationRes.data.questions);
         setTest(testRes.data.test || testRes.data);
@@ -40,17 +49,20 @@ const TestResult = () => {
         setLoading(false);
       }
     };
-
+  
     fetchResults();
   }, [testId, navigate]);
-
+  
   const handleFilter = async (type) => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        `http://localhost:3000/tests/${testId}/explanations/filter?filter=${type}`,
+        `https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/explanations/filter?filter=${type}`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
       );
       setFilteredQuestions(res.data.filtered);
@@ -58,6 +70,7 @@ const TestResult = () => {
       console.error("Filter fetch failed", error);
     }
   };
+  
 
   const getOptionStyle = (q, option, index) => {
     const detail = result?.details.find((d) => d.questionId === q._id || d.questionId === q.questionId);

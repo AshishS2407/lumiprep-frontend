@@ -23,20 +23,28 @@ const StartTest = () => {
     const fetchTestData = async () => {
       try {
         const token = localStorage.getItem("token");
-
+  
         const [testRes, questionsRes] = await Promise.all([
-          axios.get(`http://localhost:3000/tests/${testId}`, {
-            headers: { Authorization: `Bearer ${token}` },
+          axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            withCredentials: false, // Optional unless using cookies
           }),
-          axios.get(`http://localhost:3000/tests/${testId}/questions`, {
-            headers: { Authorization: `Bearer ${token}` },
+          axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${testId}/questions`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            withCredentials: false,
           }),
         ]);
-
+  
         const fetchedTest = testRes.data.test || testRes.data;
         setTest(fetchedTest);
         setQuestions(questionsRes.data.questions || questionsRes.data);
-
+  
         // Initialize timer once test is loaded
         const savedTimer = localStorage.getItem(`timer-${testId}`);
         const initialSeconds = savedTimer
@@ -47,9 +55,10 @@ const StartTest = () => {
         console.error("Failed to fetch test data:", err);
       }
     };
-
+  
     fetchTestData();
   }, [testId]);
+  
 
   // Timer countdown
   useEffect(() => {
