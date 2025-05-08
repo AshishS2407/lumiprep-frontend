@@ -3,7 +3,7 @@ import axios from "axios";
 
 const DashboardStats = () => {
   const [stats, setStats] = useState({
-    totalTests: 0, // updated to match the data you are fetching
+    totalTests: 0,
     passed: 0,
     failed: 0,
     average: 0,
@@ -12,27 +12,32 @@ const DashboardStats = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const token = localStorage.getItem("token"); // Fetch token from localStorage
+        const token = localStorage.getItem("token");
 
-        // Ensure token exists
         if (!token) {
           console.error("No token found. Please log in.");
-          return; // Exit if token is not available
+          return;
         }
 
-        // Fetch data from the backend with Authorization header
-        const res = await axios.get("http://localhost:3000/tests/user-stats", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/tests/user-stats`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            withCredentials: false, // Optional if not using cookies
+          }
+        );
 
-        // Handle response safely with fallback values
         setStats({
-          totalTests: res.data.totalTests ?? 0, // Make sure the key matches the backend response
+          totalTests: res.data.totalTests ?? 0,
           passed: res.data.passed ?? 0,
           failed: res.data.failed ?? 0,
-          average: (typeof res.data.average === "number" && res.data.average >= 0) ? res.data.average : 0, // Validate average
+          average:
+            typeof res.data.average === "number" && res.data.average >= 0
+              ? res.data.average
+              : 0,
         });
       } catch (error) {
         console.error("Error fetching stats:", error);
@@ -40,7 +45,7 @@ const DashboardStats = () => {
     };
 
     fetchStats();
-  }, []); // Run once on component mount
+  }, []);
 
   return (
     <div className="grid grid-rows-4 w-96 md:w-96 mx-auto sm:grid-cols-2 md:grid-cols-2 gap-4">
@@ -58,7 +63,9 @@ const DashboardStats = () => {
       </div>
       <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
         <p className="text-2xl font-bold text-purple-500">
-          {typeof stats.average === "number" && stats.average >= 0 ? stats.average.toFixed(2) + "%" : "N/A"}
+          {typeof stats.average === "number" && stats.average >= 0
+            ? stats.average.toFixed(2) + "%"
+            : "N/A"}
         </p>
         <p className="text-gray-600 text-sm">Overall Average</p>
       </div>

@@ -12,12 +12,19 @@ const RecentTests = () => {
   useEffect(() => {
     const fetchRecentTests = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/tests/recent-submitted", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-
+        const token = localStorage.getItem("token");
+  
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/tests/recent-submitted`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: false, // Optional unless you're using cookies
+          }
+        );
+  
         console.log("API response:", res.data);
         setRecentTests(res.data?.tests || []);
       } catch (error) {
@@ -28,9 +35,10 @@ const RecentTests = () => {
         setLoading(false);
       }
     };
-
+  
     fetchRecentTests();
   }, []);
+  
 
   // Handle the click event for navigating to the test result page
   const handleTestClick = (testId) => {

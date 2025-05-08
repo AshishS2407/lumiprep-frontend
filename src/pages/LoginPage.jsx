@@ -16,7 +16,7 @@ const LoginPage = () => {
 
     try {
       const res = await axios.post(
-        "https://lumiprep10-production-e6da.up.railway.app/auth/login",
+        `${process.env.REACT_APP_API_URL}/auth/login`,
         {
           email,
           password,
@@ -28,6 +28,7 @@ const LoginPage = () => {
           withCredentials: false, // Optional unless using cookies
         }
       );
+      
       
 
       const { token, user } = res.data;
