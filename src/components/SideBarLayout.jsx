@@ -55,7 +55,7 @@ const SidebarLayout = ({ children }) => {
 
           {/* Search and Avatar */}
           <div className="flex items-center gap-4 w-96 md:w-full ml-14 lg:w-auto">
-            <div className="relative w-full sm:w-40 md:w-64">
+            <div className="relative w-full sm:w-40 md:w-64 md:mx-auto">
               <input
                 type="text"
                 placeholder="Search"
@@ -63,7 +63,7 @@ const SidebarLayout = ({ children }) => {
               />
               <BiSearch className="absolute top-2.5 left-3 text-gray-500" />
             </div>
-            <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden">
+            <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden md:mx-auto">
               <img src="https://i.pravatar.cc/40" alt="User" className="w-full h-full object-cover" />
             </div>
           </div>

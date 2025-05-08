@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import QuizSidebar from "../components/QuizSidebar";
-import Sidebar from "../components/SideBar";
 import QuestionCardSelectable from "../components/QuestionCardSelectable";
 
 const StartTest = () => {
