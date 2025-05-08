@@ -99,8 +99,8 @@ const LoginPage = () => {
           <div className="bg-white/90 w-[90%] max-w-[450px] rounded-3xl shadow-lg p-4 md:p-8">
             <div className="text-center">
               <h1 className="text-2xl md:text-3xl font-bold text-purple-600 mb-6">
-                <span className="text-purple-600">Learn</span>{" "}
-                <span className="text-gray-700">Code</span>
+                <span className="text-purple-600">Lumi</span>{" "}
+                <span className="text-gray-700">Prep</span>
               </h1>
             </div>
             <form onSubmit={handleLogin} className="space-y-4">
