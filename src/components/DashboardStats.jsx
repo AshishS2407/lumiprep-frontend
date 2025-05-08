@@ -20,7 +20,7 @@ const DashboardStats = () => {
         }
 
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/tests/user-stats`,
+          `https://lumiprep10-production-e6da.up.railway.app/tests/user-stats`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

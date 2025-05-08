@@ -15,7 +15,7 @@ const RecentTests = () => {
         const token = localStorage.getItem("token");
   
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/tests/recent-submitted`,
+          `https://lumiprep10-production-e6da.up.railway.app/tests/recent-submitted`,
           {
             headers: {
               "Content-Type": "application/json",
