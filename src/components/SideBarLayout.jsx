@@ -10,7 +10,7 @@ const SidebarLayout = ({ children }) => {
   const sidebarRef = useRef(null);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  const username = user?.username || "User";
+  const username = user?.name || "User";
   const heading = location.pathname === "/dashboard" ? `Welcome ${username}!` : "Tests For You!";
 
   useEffect(() => {

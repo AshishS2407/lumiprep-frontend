@@ -11,6 +11,10 @@ const TestCard = ({ test, onClick }) => {
   // Determine the status style based on the test's status
   const statusStyle = statusColors[test.status] || "bg-gray-200 text-gray-700";
 
+  // Debugging: Check the test object and status
+  console.log("TestCard test:", test);
+  console.log("Status style:", statusStyle);
+
   return (
     <div
       className="mt-2 md:mt-4 bg-gray-100 rounded-xl shadow-lg p-6 hover:scale-[1.02] transition-transform cursor-pointer w-96 mx-auto"

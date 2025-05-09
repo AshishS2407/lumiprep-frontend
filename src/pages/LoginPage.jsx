@@ -4,8 +4,8 @@ import axios from "axios";
 import { FaGoogle, FaGithub, FaFacebook, FaBars } from "react-icons/fa";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [lumiId, setLumiId] = useState("");
+    const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -16,9 +16,9 @@ const LoginPage = () => {
   
     try {
       const res = await axios.post(
-        "https://lumiprep10-production-e6da.up.railway.app/auth/login",
+        "https://lumiprep10-production-e6da.up.railway.app/auth/user-login",
         {
-          email,
+          lumiId,
           password,
         },
         {
@@ -124,10 +124,10 @@ const LoginPage = () => {
                 <p className="text-red-500 text-sm text-center">{error}</p>
               )}
               <input
-                type="email"
-                placeholder="Mail id"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="Lumi ID"
+                value={lumiId}
+                onChange={(e) => setLumiId(e.target.value)}
                 className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 border-gray-300 focus:ring-purple-400 text-sm"
                 required
               />
