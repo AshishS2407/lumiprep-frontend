@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
       const res = await axios.post(
         "https://lumiprep10-production-e6da.up.railway.app/auth/login",
@@ -25,19 +25,23 @@ const LoginPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: false, // Optional unless using cookies
+          withCredentials: false,
         }
       );
-      
-
+  
       const { token, user } = res.data;
-      localStorage.setItem("token", token);
-      console.log("Token stored:", localStorage.getItem("token")); // ✅ Check if storing
-            localStorage.setItem("user", JSON.stringify(user));
-
+  
+      // Block login for admins
       if (user.role === "admin") {
-        navigate("/admin-dashboard");
-      } else if (user.role === "user") {
+        setError("Admins are not allowed to login from this page.");
+        return;
+      }
+  
+      // Proceed for non-admin users
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+  
+      if (user.role === "user") {
         navigate("/dashboard");
       } else {
         setError("Access denied. Unknown role.");
@@ -48,6 +52,7 @@ const LoginPage = () => {
       );
     }
   };
+  
 
   return (
     <div className="h-screen overflow-hidden bg-gradient-to-br from-orange-100 via-white to-blue-100">
