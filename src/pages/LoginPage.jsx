@@ -54,7 +54,7 @@ const LoginPage = () => {
       {/* Navbar */}
       <nav className="flex justify-between items-center px-6 py-4 md:px-10">
         <h1 className="text-xl md:text-2xl font-bold">
-          <span className="text-purple-500">Lumi</span>{" "}
+          <span className="text-purple-500">Luminous</span>{" "}
           <span className="text-gray-700">Prep</span>
         </h1>
         {/* <div className="md:hidden">
