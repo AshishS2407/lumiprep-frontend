@@ -2,6 +2,7 @@ import React from "react";
 import SidebarLayout from "../components/SideBarLayout";
 import RecentTests from "../components/RecentTests";
 import DashboardStats from "../components/DashboardStats";
+import Leaderboard from "./LeaderBoard";
 
 const UserDashboard = () => {
   return (
@@ -26,30 +27,13 @@ const UserDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="w-full">
             <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center md:text-left md:mt-10">Leader Board</h3>
-            <div className="bg-gray-100 p-4 rounded-xl shadow-md space-y-6 md:mt-8 w-80 mx-auto md:w-[400px] md:ml-0">
-              {[
-                { name: "John Leboo", medal: "🥇" },
-                { name: "Samuel Kingasunye", medal: "🥈" },
-                { name: "Stephen Kerubo", medal: "🥉" },
-              ].map((user, i) => (
-                <div key={i} className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={`https://i.pravatar.cc/40?img=${i + 1}`}
-                      alt={user.name}
-                      className="w-10 h-10 rounded-full"
-                    />
-                    <div className="text-sm font-medium text-gray-700">{user.name}</div>
-                  </div>
-                  <div className="text-xl">{user.medal}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-              <div className="md:mt-23">
-              <DashboardStats />
+            <Leaderboard />
 
-              </div>
+          </div>
+          <div className="md:mt-23">
+            <DashboardStats />
+
+          </div>
         </div>
       </div>
     </SidebarLayout>
