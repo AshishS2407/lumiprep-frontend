@@ -8,28 +8,24 @@ const statusColors = {
 };
 
 const TestCard = ({ test, onClick }) => {
-  // Determine the status style based on the test's status
   const statusStyle = statusColors[test.status] || "bg-gray-200 text-gray-700";
-
-  // Debugging: Check the test object and status
-  console.log("TestCard test:", test);
-  console.log("Status style:", statusStyle);
 
   return (
     <div
-      className="mt-2 md:mt-4 bg-gray-100 rounded-xl shadow-lg p-6 hover:scale-[1.02] transition-transform cursor-pointer w-96 mx-auto"
-      onClick={onClick} // Ensure this triggers the navigation when clicked
+      className="mt-2 md:mt-4 bg-gray-100 rounded-xl shadow-lg p-4 md:p-6 hover:scale-[1.02] transition-transform cursor-pointer w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto"
+      onClick={onClick}
     >
-      <div className="flex justify-between mb-3">
-        {/* <img src={test.logoUrl} alt={test.testTitle} className="h-8" /> */}
+      <div className="flex justify-between items-center mb-3">
         <span
-          className={`text-xs px-3 py-1 rounded-full font-medium ${statusStyle}`}
+          className={`text-xs sm:text-sm px-3 py-1 rounded-full font-medium ${statusStyle}`}
         >
           {test.status}
         </span>
       </div>
-      <h2 className="text-lg font-semibold mb-1">{test.testTitle}</h2>
-      <p className="text-sm text-gray-500">{test.description}</p>
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold mb-1 text-gray-800">
+        {test.testTitle}
+      </h2>
+      <p className="text-sm text-gray-600">{test.description}</p>
     </div>
   );
 };

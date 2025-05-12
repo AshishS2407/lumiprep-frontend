@@ -46,7 +46,7 @@ const RecentTests = () => {
   };
 
   return (
-    <div className="w-96 mx-w-96 md:w-full mx-auto">
+    <div className="w-80 mx-w-96 md:w-full mx-auto">
       <h3 className="text-xl font-semibold mb-4 text-gray-800">Recent Tests</h3>
       <div className="flex gap-4 overflow-x-auto md:mt-10">
         {loading ? (

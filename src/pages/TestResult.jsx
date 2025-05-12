@@ -88,19 +88,19 @@ const TestResult = () => {
         <div className="text-gray-600 text-lg">Loading results...</div>
       </div>
     );
-
+  
   const percentage = Math.round((result.correctAnswers / result.totalQuestions) * 100);
-
+  
   return (
-    <div className="min-h-screen font-sans bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] p-6">
-      {/* Header with Title and Summary */}
-      <div className="flex justify-between items-center mb-6">
-        <div>
+    <div className="min-h-screen font-sans bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] p-4 sm:p-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+        <div className="text-center sm:text-left">
           <h1 className="text-xl font-semibold text-gray-800">{test.testTitle}</h1>
-          <p className="text-gray-500 text-sm">{test.companyName}</p>
+          <p className="text-gray-500 text-sm text-center sm:text-left">{test.companyName}</p>
         </div>
-
-        <div className="bg-white border border-gray-300 px-4 py-2 rounded-xl shadow-sm grid grid-cols-3 gap-6 text-center text-sm font-medium">
+  
+        <div className="bg-white border border-gray-300 px-6 py-4 rounded-xl shadow-sm grid grid-cols-3 gap-4 text-center text-sm font-medium w-full sm:w-auto">
           <div>
             <p className="text-gray-500">Score</p>
             <p className="text-purple-700 font-bold text-lg">{percentage}%</p>
@@ -115,46 +115,48 @@ const TestResult = () => {
           </div>
         </div>
       </div>
-
+  
       {/* Filter Buttons */}
-      <div className="flex justify-center gap-4 mb-4">
+      <div className="flex flex-wrap justify-center gap-3 mb-6">
         <button
           onClick={() => handleFilter("correct")}
-          className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full"
+          className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full transition"
         >
           Show Correct
         </button>
         <button
           onClick={() => handleFilter("incorrect")}
-          className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full"
+          className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full transition"
         >
           Show Incorrect
         </button>
         {filteredQuestions && (
           <button
             onClick={() => setFilteredQuestions(null)}
-            className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-full"
+            className="bg-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded-full transition"
           >
             Show All
           </button>
         )}
       </div>
-
-      {/* Main container: SIDEBAR + QUESTION PANEL inside one card */}
-   <div className="flex flex-col md:flex-row rounded-3xl shadow-lg overflow-hidden bg-white min-h-[80vh] max-w-6xl mx-auto">
-    {/* Sidebar - hidden on small screens */}
-    <div className="hidden md:block md:w-1/5 bg-gray-900 text-white p-6">
-      <QuizSidebar />
-    </div>
-
-        {/* Review Area */}
-        <main className="flex-1 p-10 overflow-y-auto">
-          <h2 className="text-2xl font-bold text-center mb-10 text-gray-800">
+  
+      {/* Main Content: Sidebar + Questions */}
+      <div className="flex flex-col md:flex-row rounded-3xl shadow-lg overflow-hidden bg-white min-h-[80vh] max-w-6xl mx-auto">
+        {/* Sidebar */}
+        <aside className="hidden md:block md:w-1/5 bg-gray-900 text-white p-6">
+          <QuizSidebar />
+        </aside>
+  
+        {/* Main Review */}
+        <main className="flex-1 p-5 sm:p-10 overflow-y-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-8 sm:mb-10 text-gray-800">
             {test.companyName} Quiz Review
           </h2>
-
+  
           {(filteredQuestions || questions).map((q, idx) => {
-            const detail = result.details.find((d) => d.questionId === q._id || d.questionId === q.questionId);
+            const detail = result.details.find(
+              (d) => d.questionId === q._id || d.questionId === q.questionId
+            );
             return (
               <ResultQuestionCard
                 key={q.questionId || q._id}
@@ -165,11 +167,11 @@ const TestResult = () => {
               />
             );
           })}
-
+  
           <div className="text-center mt-10">
             <button
               onClick={() => navigate("/thank-you")}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-3 rounded-full shadow-lg transition duration-200"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full shadow-lg transition"
             >
               Finish Test
             </button>

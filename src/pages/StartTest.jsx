@@ -148,47 +148,49 @@ const StartTest = () => {
   }
 
   return (
-    <div className="min-h-screen font-sans bg-gradient-to-r from-[#e6e3f6] via-[#e8f0f9] to-[#f5eaf7] p-6">
+    <div className="min-h-screen font-sans bg-gradient-to-br from-[#f7f8fc] via-[#e3e6f3] to-[#fdf2f8] p-4 sm:p-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <div>
-          <h1 className="text-xl font-semibold text-gray-800">
-            {test.testTitle}
-          </h1>
-          <p className="text-gray-500 text-sm">{test.companyName}</p>
+          <h1 className="text-2xl font-bold text-gray-800">{test.testTitle}</h1>
+<p className="text-gray-500 text-sm text-center sm:text-left">
+  {test.companyName}
+</p>
         </div>
-        <div className="text-lg font-mono bg-white border border-gray-300 px-4 py-2 rounded-full shadow-sm flex items-center gap-2">
-          ⏱ {formatTime(timer)}
+        <div className="flex items-center gap-2 text-lg font-semibold bg-white text-gray-800 border border-gray-300 px-5 py-2 rounded-full shadow-md">
+          ⏱ <span className="font-mono">{formatTime(timer)}</span>
         </div>
       </div>
-
+  
       {/* Main Container */}
-      <div className="flex flex-col md:flex-row rounded-3xl shadow-lg overflow-hidden bg-white min-h-[80vh] max-w-6xl mx-auto">
+      <div className="flex flex-col md:flex-row bg-white rounded-3xl shadow-xl overflow-hidden max-w-6xl mx-auto border border-gray-100">
         {/* Sidebar */}
-        <div className="hidden md:block md:w-1/5 bg-gray-900 text-white p-6">
+        <aside className="hidden md:block md:w-1/5 bg-gray-900 text-white p-6">
           <QuizSidebar />
-        </div>
-
-        {/* Questions */}
-        <main className="flex-1 p-4 md:p-10 overflow-y-auto">
-          <h2 className="text-2xl font-bold text-center mb-10 text-gray-800">
-            {test.companyName} Quiz Competition Questions
+        </aside>
+  
+        {/* Questions Section */}
+        <main className="flex-1 p-6 md:p-10 overflow-y-auto">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-center text-purple-800 mb-8">
+            {test.companyName} Quiz Competition
           </h2>
-
-          {questions.map((q, idx) => (
-            <QuestionCardSelectable
-              key={q._id}
-              question={q}
-              index={idx}
-              selectedAnswer={selectedAnswers[q._id]}
-              onSelect={handleSelect}
-            />
-          ))}
-
-          <div className="text-center mt-10">
+  
+          <div className="space-y-8">
+            {questions.map((q, idx) => (
+              <QuestionCardSelectable
+                key={q._id}
+                question={q}
+                index={idx}
+                selectedAnswer={selectedAnswers[q._id]}
+                onSelect={handleSelect}
+              />
+            ))}
+          </div>
+  
+          <div className="text-center mt-12">
             <button
               onClick={handleSubmit}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-3 rounded-full shadow-lg transition duration-200"
+              className="bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white text-lg font-medium px-10 py-3 rounded-full shadow-md transition duration-200"
             >
               Submit Answers
             </button>
