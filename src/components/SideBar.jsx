@@ -37,6 +37,9 @@ const Sidebar = () => {
           <Link to="/tests" className="flex items-center gap-3 hover:text-[#a14bf4]">
             <IoBookSharp /> Tests
           </Link>
+          <Link to="/mock-tests" className="flex items-center gap-3 hover:text-[#a14bf4]">
+            <IoBookSharp /> Mock Tests
+          </Link>
           {/* <div className="flex items-center gap-3 hover:text-[#a14bf4] cursor-pointer">
             <IoBookSharp /> Courses
           </div> */}

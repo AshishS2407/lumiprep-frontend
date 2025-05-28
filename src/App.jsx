@@ -16,6 +16,9 @@ import AddExplanationPage from "./pages/AddExplanationPage";
 import ExplanationPage from "./pages/ExplanationPage";
 import AddQuestionFormPage from "./pages/AddQuestionFormPage";
 import SubTestList from "./pages/SubTestList";
+import MockTestsPage from "./pages/MockTestsPage";
+import MockTestQuestions from "./pages/MockTestQuestions";
+import MockTestResult from "./pages/MockTestResult";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -39,6 +42,10 @@ function App() {
         <Route path="/explanation/:testId" element={<ExplanationPage />} />
         <Route path="/add-question/:id" element={<AddQuestionFormPage />} />
         <Route path="/tests/:mainTestId/subtests" element={<SubTestList />} />
+                <Route path="/mock-tests" element={<MockTestsPage />} />
+<Route path="/mock-test/:mockTestId" element={<MockTestQuestions />} />
+<Route path="/mock/:mockTestId/result" element={<MockTestResult />} />
+
 
       </Routes>
     </Router>
