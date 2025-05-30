@@ -24,7 +24,8 @@ const AddQuestionForm = () => {
     const fetchTest = async () => {
       try {
         const res = await axios.get(`https://lumiprep10-production-e6da.up.railway.app/tests/${id}`, {
-          headers: { Authorization: `Bearer ${token}`,               "Content-Type": "application/json"
+          headers: { Authorization: `Bearer ${token}`,             
+            "Content-Type": "application/json"
         },
         withCredentials: false, // Optional unless using cookies
         });

@@ -12,7 +12,7 @@ const AllMockTests = () => {
     const fetchMockTests = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:3000/mock/get-mocks", {
+        const res = await axios.get("https://lumiprep10-production-e6da.up.railway.app/mock/get-mocks", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

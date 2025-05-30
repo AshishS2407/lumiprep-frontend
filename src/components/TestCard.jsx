@@ -25,7 +25,9 @@ const TestCard = ({ test, onClick }) => {
       <h2 className="text-base sm:text-lg md:text-xl font-semibold mb-1 text-gray-800">
         {test.testTitle}
       </h2>
-      <p className="text-sm text-gray-600">{test.description}</p>
+      <p className="text-sm text-gray-600">Company Name : {test.companyName}</p>
+            <p className="text-sm text-gray-600">Description : {test.description}</p>
+
     </div>
   );
 };
